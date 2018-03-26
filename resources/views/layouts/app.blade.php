@@ -26,8 +26,10 @@
             <a href="#"><img src="{{ asset('img/meta4.gif') }}" alt="" width="15" height="14" /></a>
         </div>
             @endauth
+        @else
+            <p>Tips: <a href="{{ route('login') }}">Log in</a> for <a href="#">Advance search </a></p>
         @endif
-        <p>Tips: <a href="{{ route('login') }}">Log in</a> for <a href="#">Advance search </a></p>
+
 
     </div>
     <div id="header">
@@ -38,6 +40,7 @@
             @if (Route::has('login'))
             @auth
             <li><a href="{{ url('/home') }}">Home</a></li>
+            <li><a href="{{ route('logout') }}">Logout</a></li>
             @else
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Register</a></li>

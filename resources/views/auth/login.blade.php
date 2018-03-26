@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div style=" margin: 120px;">
-
+<!-- khung -->
+<div style=" margin-top: 99px;border-style: ridge;">
+<!-- noi_dung -->
 <div class="container" >
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

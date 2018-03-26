@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div style=" margin: 120px;">
+<!-- khung -->
+<div style=" margin-top: 99px;border-style: ridge;">
+<!-- noi dung -->
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -61,7 +63,11 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="isCty" > dang ky cho cong ty
+                            </label>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

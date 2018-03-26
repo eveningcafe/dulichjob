@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- khung -->
+<div style=" margin-top: 99px;border-style: ridge;">
+<!-- noi dung -->
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -19,5 +22,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
