@@ -19,3 +19,7 @@ Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('HdvProfile','HdvProfileController@getData');
+Route::get('HdvProfile/update','HdvProfileController@getDataUpdate');
+Route::post('HdvProfile/update',array('before' => 'csrf','uses'=>'HdvProfileController@updateData'));
