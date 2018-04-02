@@ -19,6 +19,13 @@
 
                     You are logged in!
                 </div>
+                <ul id="header">
+                    @if (Route::has('login'))
+                    @auth
+                    <li><a href="{{ url('/HdvProfile') }}">View Profile</a></li>
+                    @endauth
+                    @endif
+                </ul>
             </div>
         </div>
     </div>
