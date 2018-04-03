@@ -43,4 +43,11 @@ class LoginController extends Controller {
 		Auth::logout();
 		return redirect('/login');
 	}
+
+	public function authenticated(Request $request, $user)
+	{	 
+		if($user->type == 'hdv') {
+			return redirect()->intended('/home');
+		}
+	}
 }
