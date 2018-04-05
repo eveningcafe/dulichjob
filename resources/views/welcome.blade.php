@@ -16,8 +16,16 @@
             </form>
         </div>
 
-        <div id="newest_tour" style="border-style: ridge;height: 333px;margin-top: 80px;">
-            show cac tour moi nhat vao day (title, thong tin chung,...)
+        <div id="newest_tour" style="border-style: ridge;height: 333px;margin-top: 80px;overflow: auto;">
+            @foreach ($newTours as $n)
+            <p style="margin:15px 0 20px 25px;">
+                <b>Tour đi:</b>  {{$n->dia_diem}} <br/>
+                <b>Lịch trình:</b> {{$n->lich_trinh}}<br/>
+                <b>Lượng Khách:</b> {{number_format($n->so_luong_khach)}} <br/>
+                <b>Thời gian tạo:</b> {{$n->created_at}} <br/>
+                <hr/>
+            </p>
+            @endforeach
 
         </div>
 

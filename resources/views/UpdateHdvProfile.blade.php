@@ -1,62 +1,50 @@
 <?php
-	foreach($data as $row)
-	{
-		$hdvname = $row->ten;
-		$gioitinh = $row->gioi_tinh;
-        $sodienthoai1 = $row->so_dien_thoai_1;
-        $sodienthoai2 = $row->so_dien_thoai_2;
-        $kinhnghiem = $row->kinh_nghiem;
-        $hocvan = $row->hoc_van;
-        $noilamviec = $row->noi_lam_viec;
-        $ngoaingu = $row->ngoai_ngu;
-        $chungchi = $row->chung_chi;
-        $tugioithieu = $row->tu_gioi_thieu;
-        $avatarurl = $row->avatar_url;
-	}
-	if(!isset($hdvname))
-	{
-		$hdvname='';
-	}
-	if(!isset($gioitinh))
-	{
-		$gioitinh='';
-	}
-	if(!isset($sodienthoai1))
-	{
-		$sodienthoai1='';
-    }
-    if(!isset($sodienthoai2))
-	{
-		$sodienthoai2='';
-	}
-	if(!isset($kinhnghiem))
-	{
-		$kinhnghiem='';
-    }
-    if(!isset($hocvan))
-	{
-		$hocvan='';
-    }
-    if(!isset($noilamviec))
-	{
-		$noilamviec='';
-    }
-    if(!isset($ngoaingu))
-	{
-		$ngoaingu='';
-    }
-    if(!isset($chungchi))
-	{
-		$chungchi='';
-    }
-    if(!isset($tugioithieu))
-	{
-		$tugioithieu='';
-    }
-    if(!isset($avatarurl))
-	{
-		$avatarurl='';
-    }
+foreach ($data as $row) {
+	$hdvname = $row->ten;
+	$gioitinh = $row->gioi_tinh;
+	$sodienthoai1 = $row->so_dien_thoai_1;
+	$sodienthoai2 = $row->so_dien_thoai_2;
+	$kinhnghiem = $row->kinh_nghiem;
+	$hocvan = $row->hoc_van;
+	$noilamviec = $row->noi_lam_viec;
+	$ngoaingu = $row->ngoai_ngu;
+	$chungchi = $row->chung_chi;
+	$tugioithieu = $row->tu_gioi_thieu;
+	$avatarurl = $row->avatar_url;
+}
+if (!isset($hdvname)) {
+	$hdvname = '';
+}
+if (!isset($gioitinh)) {
+	$gioitinh = '';
+}
+if (!isset($sodienthoai1)) {
+	$sodienthoai1 = '';
+}
+if (!isset($sodienthoai2)) {
+	$sodienthoai2 = '';
+}
+if (!isset($kinhnghiem)) {
+	$kinhnghiem = '';
+}
+if (!isset($hocvan)) {
+	$hocvan = '';
+}
+if (!isset($noilamviec)) {
+	$noilamviec = '';
+}
+if (!isset($ngoaingu)) {
+	$ngoaingu = '';
+}
+if (!isset($chungchi)) {
+	$chungchi = '';
+}
+if (!isset($tugioithieu)) {
+	$tugioithieu = '';
+}
+if (!isset($avatarurl)) {
+	$avatarurl = '';
+}
 ?>
 @extends('layouts.app')
 
@@ -68,7 +56,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-            	<div class="panel-heading hdv">YOUR PROFILE</div>	
+            	<div class="panel-heading hdv">YOUR PROFILE</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="/HdvProfile/update">
