@@ -44,10 +44,11 @@ class LoginController extends Controller {
 		return redirect('/login');
 	}
 
-	public function authenticated(Request $request, $user)
-	{	 
-		if($user->type == 'hdv') {
-			return redirect()->intended('/home');
+	public function authenticated(Request $request, $user) {
+		if ($user->type == 'hdv') {
+			return redirect()->intended('/HdvProfile');
+		} else if ($user->type == 'cty') {
+			return redirect()->intended('/CtyProfile');
 		}
 	}
 }
