@@ -27,6 +27,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('HdvProfile', 'HdvProfileController@getData');
 Route::get('HdvProfile/update', 'HdvProfileController@getDataUpdate');
 Route::post('HdvProfile/update', array('before' => 'csrf', 'uses' => 'HdvProfileController@updateData'));
+Route::get('HdvAdvancedSearch', 'HdvSearchController@hdvGetFormSearch');
+Route::get('HdvAdvancedSearch/result', 'HdvSearchController@advancedSearch');
+Route::get('notUser','HdvSearchController@notUser');
+Route::get('Cty/{id}','HdvSearchController@getCty');
+Route::get('Tour/{id}','HdvSearchController@getTour');
 
 Route::get('CtyProfile', 'CtyProfileController@getData');
 Route::post('CtyProfile/update', array('before' => 'csrf', 'uses' => 'CtyProfileController@updateData'));
