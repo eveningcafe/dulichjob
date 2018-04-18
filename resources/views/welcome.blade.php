@@ -1,3 +1,22 @@
+<?php
+    if(\Auth::user())
+    {
+        if(\Auth::user()->type=="cty")
+        {
+            $link="CtyAdvancedSearch";
+        } 
+        else
+        {
+            $link="HdvAdvancedSearch";
+        }   
+    }
+    else
+        {
+            $link="notUser";
+        }
+?>
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -6,11 +25,11 @@
             <form action="#">
                 <img src="{{ asset('img/title.gif') }}" alt="" width="90" height="30" />
                 <input type="text" class="first input" value="Enter keywords" /> <input type="text" class="second input" value="Tour Locations (country, city)" />
-                <a href="#" class="button">Search</a>
+                <a href="<?php echo $link1; ?>" class="button">Search</a>
                 <div class="line">
                     <input type="checkbox" class="check" /> <span class="exept">Search Title Only</span>
                     <div class="links">
-                        <a href="#">Advance search</a>
+                        <a href="<?php echo $link; ?>">Advance search</a>                        
                     </div>
                 </div>
             </form>
