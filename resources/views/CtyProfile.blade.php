@@ -133,6 +133,7 @@ if ($count != 0) {
 @extends('layouts.app')
 
 @section('content')
+
 <!-- khung -->
 <div style=" margin-top: 99px;border-style: ridge;">
 <!-- noi dung -->
@@ -140,14 +141,14 @@ if ($count != 0) {
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-            	<div class="panel-heading">Profile</div>
+            	<!-- <div class="panel-heading">Profile</div> -->
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="/CtyProfile/update">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Tên</label>
+                            <label for="name" class="col-md-4 control-label">Tên </label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="<?php echo $ctyname; ?>" required autofocus>
@@ -274,7 +275,14 @@ for ($i = 0; $i < $count; $i++) {
             </div>
         </div>
         <div class="col-md-4 col-md-offset-2">
+            <div style="margin: 10px;" >
         	<img alt="Company image here" src="<?php echo $image; ?> " height="150" width="200"/>
+            </div>
+            <div>
+            <input type="button" onclick="location.href='{{ url('/makeTour') }}';" value="Tạo Tour" />
+            <input type="button" onclick="location.href='{{ url('/madeTour') }}';" value="Tour Đã Tạo" />
+            <input type="button" onclick="location.href='{{ url('/respond') }}';" value="Duyệt Thư Đăng Ký" />
+            </div>
         </div>
     </div>
 </div>

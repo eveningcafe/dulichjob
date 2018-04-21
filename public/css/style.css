@@ -18,6 +18,20 @@ margin:0 auto;
 font-family:Arial, Helvetica, sans-serif;
 font-size:11px;
 }
+
+.data-table {
+    font-size: 14px;
+    width: 800px;
+}
+
+.data-table th, 
+.data-table td {
+    border: 1px solid #e1edff;
+    padding: 7px 17px;
+}
+.data-table caption {
+    margin: 7px;
+}
 .meta{
 color:#F5F5F5;
 background-image:url("../img/meta_bg.gif");

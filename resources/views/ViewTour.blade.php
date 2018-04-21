@@ -1,11 +1,10 @@
 <?php
-	foreach($tour as $row)
-	{
-		$dia_diem = $row->dia_diem;
-	    $so_luong_khach = $row->so_luong_khach;
-	    $lich_trinh = $row->lich_trinh;
-	    $tinh_trang = $row->tinh_trang;
-    }
+foreach ($tour as $row) {
+	$dia_diem = $row->dia_diem;
+	$so_luong_khach = $row->so_luong_khach;
+	$lich_trinh = $row->lich_trinh;
+	$tinh_trang = $row->tinh_trang;
+}
 ?>
 @extends('layouts.app')
 
@@ -17,10 +16,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-            	<div class="panel-heading hdv">TOUR PROFILE</div>	
+            	<div class="panel-heading hdv">TOUR PROFILE</div>
 
                 <div class="panel-body">
-                
+
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">Địa điểm:</label>
 
@@ -44,7 +43,7 @@
 
                                 <?php echo $tinh_trang; ?>
                         </div>
-                        <br>                    
+                        <br>
                 </div>
             </div>
         </div>

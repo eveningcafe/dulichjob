@@ -1,22 +1,22 @@
 <?php
-	foreach($data as $row)
-	{
-		$hdvname = $row->ten;
-		$gioitinh = $row->gioi_tinh;
-        $sodienthoai1 = $row->so_dien_thoai_1;
-        $sodienthoai2 = $row->so_dien_thoai_2;
-        $kinhnghiem = $row->kinh_nghiem;
-        $hocvan = $row->hoc_van;
-        $noilamviec = $row->noi_lam_viec;
-        $ngoaingu = $row->ngoai_ngu;
-        $chungchi = $row->chung_chi;
-        $tugioithieu = $row->tu_gioi_thieu;
-        $avatarurl = $row->avatar_url;
-	}
+foreach ($data as $row) {
+	$hdvname = $row->ten;
+	$gioitinh = $row->gioi_tinh;
+	$sodienthoai1 = $row->so_dien_thoai_1;
+	$sodienthoai2 = $row->so_dien_thoai_2;
+	$kinhnghiem = $row->kinh_nghiem;
+	$hocvan = $row->hoc_van;
+	$noilamviec = $row->noi_lam_viec;
+	$ngoaingu = $row->ngoai_ngu;
+	$chungchi = $row->chung_chi;
+	$tugioithieu = $row->tu_gioi_thieu;
+	$avatarurl = $row->avatar_url;
+}
 ?>
 @extends('layouts.app')
 
 @section('content')
+
 <!-- khung -->
 <div style=" margin-top: 99px;border-style: ridge;">
 <!-- noi dung -->
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-            	<div class="panel-heading hdv">YOUR PROFILE</div>	
+            	<div class="panel-heading hdv">YOUR PROFILE</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" action="/HdvProfile/update">
@@ -106,6 +106,13 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            <div>
+                <input type="button" style="margin: 10px;" onclick="location.href='{{ url('/viewTour') }}';" value="View Tour" />
+                <input type="button" style="margin: 10px;" onclick="location.href='{{ url('/viewAppliedTour') }}';" value="Tour Đã Đăng Ký" />
+            </div>
+
         </div>
     </div>
 </div>

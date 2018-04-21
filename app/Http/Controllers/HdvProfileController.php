@@ -58,4 +58,8 @@ class HdvProfileController extends Controller {
 			return view('ViewHdvProfile', ['data' => $data]);
 		}
 	}
+	public function getHDV($hdv_id) {
+		$data = \DB::table('huong_dan_viens')->where('id', '=', $hdv_id)->get();
+		return view('ViewHDVInfor', ['data' => $data]);
+	}
 }

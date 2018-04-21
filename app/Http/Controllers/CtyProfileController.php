@@ -10,9 +10,11 @@ class CtyProfileController extends Controller {
 	}
 
 	public function getData() {
-		$id = Auth::user()->id;
+		$id = \Auth::user()->id;
+		$congty_id = \DB::table("cong_tys")
+			->where('user_id', 'LIKE', \Auth::user()->id)->value('id');
 		$data = \DB::table('cong_tys')->where('user_id', '=', $id)->get();
-		$vp = \DB::table('van_phongs')->where('congty_id', '=', $id)->get();
+		$vp = \DB::table('van_phongs')->where('congty_id', '=', $congty_id)->get();
 		return view('CtyProfile', ['data' => $data, 'vp' => $vp]);
 	}
 
@@ -41,11 +43,23 @@ class CtyProfileController extends Controller {
 			}
 
 			\DB::table('van_phongs')->where('congty_id', '=', $id)->delete();
+			$id_cty = \DB::table("cong_tys")
+				->where('user_id', 'LIKE', \Auth::user()->id)->value('id');
 			for ($i = 0; $i < $count; $i++) {
-				\DB::table('van_phongs')->insert(['congty_id' => $id, 'dia_chi' => $address[$i], 'email' => $email[$i], 'so_dien_thoai' => $phone[$i]]);
+				\DB::table('van_phongs')->insert(['congty_id' => $id_cty, 'dia_chi' => $address[$i], 'email' => $email[$i], 'so_dien_thoai' => $phone[$i]]);
 			}
 			return redirect('/CtyProfile');
 		}
 
+	}
+
+	public function makeTour() {
+		return view('TaoTour');
+	}
+
+	public function getCty($cty_id) {
+		$cty = \DB::table('cong_tys')->where('id', '=', $cty_id)->get();
+		$vp = \DB::table('van_phongs')->where('congty_id', '=', $cty_id)->get();
+		return view('ViewInformCty', ['cty' => $cty, 'vp' => $vp]);
 	}
 }
