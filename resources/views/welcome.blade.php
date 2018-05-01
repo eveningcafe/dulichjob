@@ -5,58 +5,18 @@
 <img src="{{ asset('img/bigpicture.png')}}" alt="" width="892" height="303" />
 		<div class="search">
         cái luật làm
-<?php
-if (\Auth::user()) {
-	if (\Auth::user()->type == "cty") {
-		$link = "CtyAdvancedSearch";
-	} else {
-		$link = "HdvAdvancedSearch";
-	}
-} else {
-	$link = "notUser";
-}
-?>
-            <form action="#">
-                <img src="{{ asset('img/title.gif') }}" alt="" width="90" height="30" />
-                <input type="text" class="first input" value="Enter keywords" /> <input type="text" class="second input" value="Tour Locations (country, city)" />
-                <a href="<?php echo $link; ?>" class="button">Search</a>
-                <div class="line">
-                    <input type="checkbox" class="check" /> <span class="exept">Search Title Only</span>
-                    <div class="links">
-                        <a href="<?php echo $link; ?>">Advance search</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="search">
-        cái hưng làm
-<?php
-if (\Auth::user()) {
-	if (\Auth::user()->type == "cty") {
-		$link1 = "CtyBasicSearch";
-		$link2 = "CtyAdvancedSearch";
-	} else {
-		$link1 = "";
-		$link2 = "";
-	}
-} else {
-	$link1 = "notUser";
-	$link2 = "notUser";
-}
 
-?>
-            <form action="<?php echo $link1; ?>" method="GET">
+            <form action="hdvBasicSearch" method="GET">
                 <img src="{{ asset('img/title.gif') }}" alt="" width="90" height="30" />
-                <input type="text" class="first input" value="Enter keywords" name="name" /> <input type="text" class="second input" value="Tour Locations (country, city)" name="city"/>
-                <button type="submit" class="button">Search</button>
+                <input type="text" class="first input" value="Enter keywords" name="name" />
+                <input type="submit" name="submit" class="button" value="Search"/>
                 <div class="line">
-                    <input type="checkbox" class="check" /> <span class="exept">Search Title Only</span>
-                    <div class="links">
-                        <a href="<?php echo $link2; ?>">Advance search</a>
-                    </div>
+                    <input type="radio" name="search" value="tour" class="check" checked /> <span class="exept">Search address tour</span>
+                    <input type="radio" name="search" value="cty" class="check" /> <span class="exept">Search name company</span>
                 </div>
             </form>
         </div>
+
 
         <div class="search">
         cái cần làm:
