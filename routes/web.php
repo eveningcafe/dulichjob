@@ -52,9 +52,7 @@ Route::get('respondHDV/update', 'TourController@updateHDVTour');
 
 //route tìm kiếm
 /////hdv-luat da lam
-Route::get('HdvAdvancedSearch', 'HdvSearchController@hdvGetFormSearch');
-Route::get('HdvAdvancedSearch/result', 'HdvSearchController@advancedSearch');
-Route::get('notUser', 'HdvSearchController@notUser');
+Route::get('hdvBasicSearch', 'BasicSearchController@basicSearch');
 ////cty-hung da lam
 Route::get('CtyBasicSearch', 'CtySearchController@basicSearch');
 Route::get('HDV/{id}', 'HdvProfileController@getHDV');
@@ -67,5 +65,7 @@ Route::get('notUser', 'CtySearchController@notUser');
 //Route::get('ctySearchTour',
 //Route::get('ctySearchHDV',
 ////luat
-//Route::get('hdvSearchTour',
-//Route::get('hdvSearchCty',
+Route::get('hdvSearchTour', 'HdvSearchController@hdvGetFormSearchTour');
+Route::get('hdvSearchCty', 'HdvSearchController@hdvGetFormSearchCty');
+Route::get('hdvSearchCty/result', 'HdvSearchController@advancedSearch');
+Route::get('hdvSearchTour/result', 'HdvSearchController@advancedSearch');

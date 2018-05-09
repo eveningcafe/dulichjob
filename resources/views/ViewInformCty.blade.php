@@ -57,36 +57,24 @@ if ($count != 0) {
 
                                 <?php echo $image; ?>
                         </div>
-                        <div>
-                        <?php
-for ($i = 0; $i < $count; $i++) {
-	echo '<div><label for="description" class="col-md-4 control-label">Văn phòng </label></div>
+                <?php for ($i = 0; $i < $count; $i++) { ?>
+                    <div> <label for="description" class="col-md-4 control-label">Văn phòng </label> </div>
+                    <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                        <label for="address" class="col-md-4 control-label">Địa chỉ</label>
 
+                            <?php echo $address[$i]; ?>
+                    </div>
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="email[]" class="col-md-4 control-label">Email</label>
 
-                            <label for="address" class="col-md-4 control-label">Địa chỉ</label>
+                            <?php echo $email[$i]; ?>
+                    </div>
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="phone[]" class="col-md-4 control-label">Điện thoại</label>
 
-                            <div class="col-md-6">';
-	echo '<input id="address" type="text" class="form-control" name="address[]" value="' . $address[$i] . '" readonly="readonly">
-                            </div>
-
-                            <label for="email[]" class="col-md-4 control-label">Email</label>
-
-                            <div class="col-md-6">';
-	echo '<input id="email" type="email" class="form-control" name="email[]" value="' . $email[$i] . '" readonly="readonly">
-
-                            </div>
-
-                            <label for="phone[]" class="col-md-4 control-label">Điện thoại</label>
-
-                            <div class="col-md-6">';
-	echo '<input id="phone" type="tel" class="form-control" name="phone[]" value="' . $phone[$i] . '" readonly="readonly">
-
-                            </div>';
-}
-
-?>
-                        </div>
-                        <br>
+                            <?php echo $phone[$i]; ?>
+                    </div>
+                <?php } ?>
                 </div>
             </div>
         </div>
