@@ -48,7 +48,9 @@ class CtyProfileController extends Controller {
 			for ($i = 0; $i < $count; $i++) {
 				\DB::table('van_phongs')->insert(['congty_id' => $id_cty, 'dia_chi' => $address[$i], 'email' => $email[$i], 'so_dien_thoai' => $phone[$i]]);
 			}
-			return redirect('/CtyProfile');
+
+			echo '<script type="text/javascript">  alert("Đã cập nhật thông tin");</script>';
+			echo '<script type="text/javascript">  window.location = "/CtyProfile";</script>';
 		}
 
 	}

@@ -1,34 +1,34 @@
 <?php
 foreach ($data as $row) {
-    $ten = $row->ten;
-    $anh = $row->avatar_url;
-    $kinhNghiem = $row->kinh_nghiem;
-    $hocVan = $row->hoc_van;
-    $ngoaiNgu = $row->ngoai_ngu;
-    $chungChi = $row->chung_chi;
-    $moTa = $row->tu_gioi_thieu;
-    }
+	$ten = $row->ten;
+	$anh = $row->avatar_url;
+	$kinhNghiem = $row->kinh_nghiem;
+	$hocVan = $row->hoc_van;
+	$ngoaiNgu = $row->ngoai_ngu;
+	$chungChi = $row->chung_chi;
+	$moTa = $row->tu_gioi_thieu;
+}
 
 if (!isset($ten)) {
-    $ten = '';
+	$ten = '';
 }
 if (!isset($anh)) {
-    $anh = '';
+	$anh = '';
 }
 if (!isset($kinhNghiem)) {
-    $kinhNghiem = '';
+	$kinhNghiem = '';
 }
 if (!isset($hocVan)) {
-    $hocVan= '';
+	$hocVan = '';
 }
 if (!isset($ngoaiNgu)) {
-    $ngoaiNgu = '';
+	$ngoaiNgu = '';
 }
 if (!isset($chungChi)) {
-    $chungChi= '';
+	$chungChi = '';
 }
 if (!isset($moTa)) {
-    $moTa = '';
+	$moTa = '';
 }
 
 ?>
@@ -45,7 +45,7 @@ if (!isset($moTa)) {
                 <div class="panel-heading hdv">Thông Tin Hướng Dẫn Viên</div>
 
                 <div class="panel-body">
-                    
+
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('ten') ? ' has-error' : '' }}">
@@ -81,8 +81,17 @@ if (!isset($moTa)) {
                         <div class="form-group{{ $errors->has('anh') ? ' has-error' : '' }}">
                             <label for="anh" class="col-md-4 control-label">Hình ảnh</label>
                             <img src="<?php echo $anh; ?>" />
-                        </div>                   
-                    
+                        </div>
+                        <?php if (\Auth::user()->type == "cty") {?>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button onclick="window.location.href='/InviteHDV/<?php echo $hdvid; ?>'" class="btn btn-primary">
+                                    Mời tham gia tour
+                                </button>
+                            </div>
+                        </div>
+                        <?php }?>
+
                 </div>
             </div>
         </div>

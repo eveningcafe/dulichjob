@@ -258,6 +258,28 @@ class TourController extends Controller {
 		return view('DuyetThuDK', compact('data'));
 
 	}
+	public function viewDetail($id) {
+		$user_id = \Auth::user()->id;
+		$cty_id = \DB::table('cong_tys')->where('user_id', '=', $user_id)->value('id');
+		$tour = \DB::table('congty_tours')->leftjoin('tour_du_lichs', 'congty_tours.tour_id', '=', 'tour_du_lichs.id')->where('congty_id', '=', $cty_id)->where('congty_tours.id', '=', $id)->get();
+		return view('TourDetail', ['tour' => $tour]);
+	}
+	public function getTourtoInvite($id) {
+		$user_id = \Auth::user()->id;
+		$cty_id = \DB::table('cong_tys')->where('user_id', '=', $user_id)->value('id');
+		$tour = \DB::table('congty_tours')->leftjoin('tour_du_lichs', 'congty_tours.tour_id', '=', 'tour_du_lichs.id')->where('congty_id', '=', $cty_id)->where('tour_du_lichs.tinh_trang', 'LIKE', 'đang xếp lịch')->get();
+		return view('TourInvite', ['tour' => $tour, 'hdv_id' => $id, 'cty_id' => $cty_id]);
+	}
+	public function sendInvitation() {
+		$tour_id = $_POST['tour_id'];
+		$cty_id = $_POST['cty_id'];
+		$hdv_id = $_POST['hdv_id'];
+		$ghi_chu = $_POST['ghi_chu'];
+		\DB::table('hdv_invitation')->insert(['congty_id' => $cty_id, 'tour_id' => $tour_id, 'huongdv_id' => $hdv_id, 'ghi_chu' => $ghi_chu, 'trang_thai' => 'wait']);
+		echo '<script type="text/javascript">  alert("Đã gửi lời mời");</script>';
+		echo '<script type="text/javascript">  window.location = "/InviteHDV/' . $hdv_id . '";</script>';
+
+	}
 	/**
 	 * Display a listing of the resource.
 	 *

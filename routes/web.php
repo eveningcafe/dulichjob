@@ -49,20 +49,22 @@ Route::get('viewTour', 'TourController@getTour');
 Route::get('viewAppliedTour', 'TourController@getAppliedTour');
 Route::get('respond', 'TourController@getHDVDKTour');
 Route::get('respondHDV/update', 'TourController@updateHDVTour');
-
+Route::get('thongBaoHDV', 'TourController@getThongBaoHDV');
 //route tìm kiếm
 /////hdv-luat da lam
 Route::get('hdvBasicSearch', 'BasicSearchController@basicSearch');
 ////cty-hung da lam
 Route::get('CtyBasicSearch', 'CtySearchController@basicSearch');
-Route::get('HDV/{id}', 'HdvProfileController@getHDV');
-Route::get('Tour/{id}', 'CtyTourController@getMyTour');
-Route::get('CtyAdvancedSearch', 'CtySearchController@getForm');
-Route::get('CtyAdvancedSearch/search', 'CtySearchController@advancedSearch');
 Route::get('notUser', 'CtySearchController@notUser');
 ///route can lam
 ////hung
-//Route::get('ctySearchTour',
+Route::get('ctySearchTour', 'CtySearchController@getSearchTourForm');
+Route::get('ctySearchHDV', 'CtySearchController@getSearchHDVForm');
+Route::get('CtyTourSearch', 'CtySearchController@searchTour');
+Route::get('CtyHDVSearch', 'CtySearchController@searchHDV');
+Route::get('ViewTourDetail/{id}', 'TourController@viewDetail');
+Route::get('InviteHDV/{id}', 'TourController@getTourtoInvite');
+Route::post('SendInvitation', array('before' => 'csrf', 'uses' => 'TourController@sendInvitation'));
 //Route::get('ctySearchHDV',
 ////luat
 Route::get('hdvSearchTour', 'HdvSearchController@hdvGetFormSearchTour');

@@ -3,23 +3,8 @@
 
 @section('content')
 <img src="{{ asset('img/bigpicture.png')}}" alt="" width="892" height="303" />
-		<div class="search">
-        cái luật làm
-
-            <form action="hdvBasicSearch" method="GET">
-                <img src="{{ asset('img/title.gif') }}" alt="" width="90" height="30" />
-                <input type="text" class="first input" value="Enter keywords" name="name" />
-                <input type="submit" name="submit" class="button" value="Search"/>
-                <div class="line">
-                    <input type="radio" name="search" value="tour" class="check" checked /> <span class="exept">Search address tour</span>
-                    <input type="radio" name="search" value="cty" class="check" /> <span class="exept">Search name company</span>
-                </div>
-            </form>
-        </div>
-
 
         <div class="search">
-        cái cần làm:
         @if (!Auth::check())
             </br>
             <span> sign in to search </span>
