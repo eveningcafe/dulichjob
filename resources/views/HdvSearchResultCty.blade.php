@@ -23,15 +23,16 @@
             
             <div class="panel-heading"><h5>Thông tin công ty</h5></div>
             <div class="panel-body">
-            	<?php for($i=0;$i<$count2;$i++){?>
+            	<?php for($i=0;$i<$count2;$i++) { ?>
             	<div>
             		<a class="col-md-4" style="font-size: 20px" href="/viewInfoCty/<?php echo $cty_id[$i]; ?>">Tên: <?php echo $ten[$i]; ?></a>           		
             	</div>
                 <div>
-                    <label class=" col-md-4 control-label">Link ảnh công ty: <?php echo $image[$i];?> </label>  
+                    <label class=" col-md-4 control-label">Link ảnh công ty:</label>
+                    <?php echo $image[$i];?>
+                    <br>
                 </div>
             	<?php } ?>
-                <?php echo $cty->links(); ?>
             </div>
         </div>
     </div>
