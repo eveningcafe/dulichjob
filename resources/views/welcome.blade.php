@@ -31,7 +31,9 @@
                 <b>Lịch trình:</b> {{$n->lich_trinh}}<br/>
                 <b>Lượng Khách:</b> {{number_format($n->so_luong_khach)}} <br/>
                 <b>Thời gian tạo:</b> {{$n->created_at}} <br/>
+                @if (Auth::check())
                 <a href="{{url('viewInforTour',$n->id)}}">Xem chi tiết</a>
+                @endif
                 <hr/>
             </p>
             @endforeach

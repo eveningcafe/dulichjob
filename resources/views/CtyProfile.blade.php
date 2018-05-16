@@ -119,7 +119,6 @@ if ($count != 0) {
         {
             list.removeChild(list.firstChild);
         }
-        addForm();
 
         console.log(count);
         for(i=0;i<count;i++){
@@ -139,18 +138,18 @@ if ($count != 0) {
 <!-- noi dung -->
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-7 col-md-offset-2">
             <div class="panel panel-default">
             	<!-- <div class="panel-heading">Profile</div> -->
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="/CtyProfile/update">
+                    <form class="form-horizontal" method="POST" action="/CtyProfile/update" enctype="multipart/form-data" file="true"  >
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Tên </label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="name" type="text" class="form-control" name="name" value="<?php echo $ctyname; ?>" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -164,7 +163,7 @@ if ($count != 0) {
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="description" class="col-md-4 control-label">Tự giới thiệu</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <textarea id="description" type="description" class="form-control" name="description" cols="50" rows="5" required><?php echo $gioithieu; ?></textarea>
 
                                 @if ($errors->has('description'))
@@ -179,7 +178,7 @@ if ($count != 0) {
                         <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
                             <label for="link" class="col-md-4 control-label">Website URL</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="link" type="url" class="form-control" name="link" value="<?php echo $website; ?>" required>
 
                                 @if ($errors->has('link'))
@@ -191,10 +190,11 @@ if ($count != 0) {
                         </div>
 
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">Link ảnh công ty</label>
+                            <label for="image" class="col-md-4 control-label"> Ảnh công ty</label>
 
-                            <div class="col-md-6">
-                                <input id="image" type="url" class="form-control" name="image" value="<?php echo $image; ?>" required>
+                            <div class="col-md-8">
+                                <input class="form-control" type="file" name="image" />
+                                <!-- <input id="image" type="url" class="form-control" name="image" value="<?php echo $image; ?>" required> -->
 
                                 @if ($errors->has('image'))
                                     <span class="help-block">
@@ -211,7 +211,7 @@ for ($i = 0; $i < $count; $i++) {
 
                             <label for="address" class="col-md-4 control-label">Địa chỉ</label>
 
-                            <div class="col-md-6">';
+                            <div class="col-md-8">';
 	echo '<input id="address" type="text" class="form-control" name="address[]" value="' . $address[$i] . '" required autofocus>
 
 
@@ -221,7 +221,7 @@ for ($i = 0; $i < $count; $i++) {
 
                             <label for="email[]" class="col-md-4 control-label">Email</label>
 
-                            <div class="col-md-6">';
+                            <div class="col-md-8">';
 	echo '<input id="email" type="email" class="form-control" name="email[]" value="' . $email[$i] . '" required autofocus>
 
 
@@ -231,7 +231,7 @@ for ($i = 0; $i < $count; $i++) {
 
                             <label for="phone[]" class="col-md-4 control-label">Điện thoại</label>
 
-                            <div class="col-md-6">';
+                            <div class="col-md-8">';
 	echo '<input id="phone" type="tel" class="form-control" name="phone[]" value="' . $phone[$i] . '" required autofocus>
 
 
@@ -276,7 +276,7 @@ for ($i = 0; $i < $count; $i++) {
         </div>
         <div class="col-md-4 col-md-offset-2">
             <div style="margin: 10px;" >
-        	<img alt="Company image here" src="<?php echo $image; ?> " height="150" width="200"/>
+        	<img alt="Company image here" src={{asset($image)}} height="200" width="300"/>
             </div>
             <div>
             <input type="button" onclick="location.href='{{ url('/makeTour') }}';" value="Tạo Tour" />

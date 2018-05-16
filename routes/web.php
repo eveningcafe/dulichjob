@@ -36,6 +36,11 @@ Route::get('HdvProfile/update', 'HdvProfileController@getDataUpdate');
 Route::post('HdvProfile/update', array('before' => 'csrf', 'uses' => 'HdvProfileController@updateData'));
 Route::post('dkTour/insert', array('before' => 'csrf', 'uses' => 'TourController@insertHDVTour'));
 Route::get('huydkTour/delete', 'TourController@deleteHDVTour');
+Route::get('thongBaoHDV', 'TourController@getThongBaoHDV');
+Route::get('eventHDV', 'EventHDVController@showEvent');
+Route::get('clickSeeResult/{tour_id}', 'EventHDVController@clickSeeResult');
+Route::get('clickSeeInvite/{tour_id}', 'EventHDVController@clickSeeInvite');
+
 ////cty
 Route::get('CtyProfile', 'CtyProfileController@getData');
 Route::post('CtyProfile/update', array('before' => 'csrf', 'uses' => 'CtyProfileController@updateData'));

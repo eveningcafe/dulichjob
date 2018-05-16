@@ -96,7 +96,7 @@ foreach ($tour as $row) {
                         <form class="form-horizontal" method="GET" action="/editTour">
                         <?php if(strcmp($tinh_trang,"đang xếp lịch") == 0){ ?>
                         <div class="form-group">
-                            <input type="hidden" name="edit" value="<?php echo $id; ?>">
+                            <input type="hidden" name="tour_id" value="<?php echo $id; ?>">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     Edit tour
@@ -108,7 +108,7 @@ foreach ($tour as $row) {
                         <?php if(strcmp($tinh_trang,"đang xếp lịch") == 0){ ?>
                         <form class="form-horizontal" method="GET" action="/cancleTour">
                         <div class="form-group">
-                            <input type="hidden" name="edit" value="<?php echo $id; ?>">
+                            <input type="hidden" name="tour_id" value="<?php echo $id; ?>">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     Hủy tour

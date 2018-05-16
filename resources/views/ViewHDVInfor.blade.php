@@ -1,12 +1,14 @@
 <?php
 foreach ($data as $row) {
 	$ten = $row->ten;
+	$gioiTinh = $row->gioi_tinh;
 	$anh = $row->avatar_url;
 	$kinhNghiem = $row->kinh_nghiem;
 	$hocVan = $row->hoc_van;
 	$ngoaiNgu = $row->ngoai_ngu;
 	$chungChi = $row->chung_chi;
 	$moTa = $row->tu_gioi_thieu;
+	$hdvid = $row->id;
 }
 
 if (!isset($ten)) {
@@ -40,7 +42,7 @@ if (!isset($moTa)) {
 <!-- noi dung -->
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-7 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading hdv">Thông Tin Hướng Dẫn Viên</div>
 
@@ -52,7 +54,10 @@ if (!isset($moTa)) {
                             <label for="ten" class="col-md-4 control-label">Hướng Dẫn Viên</label>
                                 <?php echo $ten; ?>
                         </div>
-
+                        <div class="form-group{{ $errors->has('ten') ? ' has-error' : '' }}">
+                            <label for="ten" class="col-md-4 control-label">Giới tính</label>
+                                <?php echo $gioiTinh; ?>
+                        </div>
                         <div class="form-group{{ $errors->has('kinhNghiem') ? ' has-error' : '' }}">
                             <label for="kinhNghiem" class="col-md-4 control-label">Kinh Nghiệm</label>
                                 <?php echo $kinhNghiem; ?>
@@ -78,10 +83,6 @@ if (!isset($moTa)) {
                             <?php echo $moTa; ?>
                         </div>
 
-                        <div class="form-group{{ $errors->has('anh') ? ' has-error' : '' }}">
-                            <label for="anh" class="col-md-4 control-label">Hình ảnh</label>
-                            <img src="<?php echo $anh; ?>" />
-                        </div>
                         <?php if (\Auth::user()->type == "cty") {?>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -93,6 +94,12 @@ if (!isset($moTa)) {
                         <?php }?>
 
                 </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2">
+            <div>
+                    <img alt="HDV image here" src={{asset($anh)}} height="280" width="220" style="margin: 10px;"/>
             </div>
         </div>
     </div>

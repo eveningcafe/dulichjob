@@ -17,7 +17,8 @@ class CreateHuongdvTourTable extends Migration {
 			$table->integer('huongdv_id')->references('id')->on('huong_dan_viens')->onDelete('cascade');
 			$table->string('loi_gioi_thieu')->nullable();
 			$table->datetime('ngay_dang_ky');
-			$table->string('tinh_trang')->nullable();
+			$table->string('tinh_trang_dk')->nullable();
+			$table->string('event_to_hdv')->default('cho tin');
 			$table->timestamps();
 		});
 	}

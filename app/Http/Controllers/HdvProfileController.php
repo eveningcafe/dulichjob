@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class HdvProfileController extends Controller {
 	public function __construct() {
@@ -9,6 +12,7 @@ class HdvProfileController extends Controller {
 
 	public function getData() {
 		$id = \Auth::user()->id;
+
 		$data = \DB::table('huong_dan_viens')->where('user_id', '=', $id)->get();
 		if (!$data->first()) {
 			return view('UpdateHdvProfile', ['data' => $data]);
@@ -24,7 +28,7 @@ class HdvProfileController extends Controller {
 		return view('UpdateHdvProfile', ['data' => $data]);
 	}
 
-	public function updateData() {
+	public function updateData(Request $request) {
 		if (isset($_POST['submit'])) {
 			$name = $_POST['name'];
 			$sex = $_POST['sex'];
@@ -36,7 +40,16 @@ class HdvProfileController extends Controller {
 			$englishlevel = $_POST['english-level'];
 			$certificate = $_POST['certificate'];
 			$description = $_POST['description'];
-			$avatarurl = $_POST['avatar-url'];
+			$file = $request->file('image');
+
+			if ($file == null) {
+				$avatar_url = \DB::table('huong_dan_viens')->where([['user_id', '=', \Auth::user()->id]])->first()->avatar_url;
+			} else {
+				$filename = str_replace(' ', '-', $file->getClientOriginalName());
+				$image_name = Carbon::now()->format('YmdHs') . $filename;
+				$avatar_url = 'hdv_image/' . $image_name;
+				$file->move('hdv_image', $image_name);
+			}
 
 			$id = \Auth::user()->id;
 			$data = \DB::table('huong_dan_viens')->where('user_id', '=', $id)->get();
@@ -44,12 +57,12 @@ class HdvProfileController extends Controller {
 				\DB::table('huong_dan_viens')->insert(['user_id' => $id, 'ten' => $name, 'gioi_tinh' => $sex,
 					'so_dien_thoai_1' => $phone1, 'so_dien_thoai_2' => $phone2, 'kinh_nghiem' => $experience,
 					'hoc_van' => $education, 'noi_lam_viec' => $addresswork, 'ngoai_ngu' => $englishlevel,
-					'chung_chi' => $certificate, 'tu_gioi_thieu' => $description, 'avatar_url' => $avatarurl]);
+					'chung_chi' => $certificate, 'tu_gioi_thieu' => $description, 'avatar_url' => $avatar_url]);
 			} else {
 				\DB::table('huong_dan_viens')->where('user_id', '=', $id)->update(['user_id' => $id, 'ten' => $name, 'gioi_tinh' => $sex,
 					'so_dien_thoai_1' => $phone1, 'so_dien_thoai_2' => $phone2, 'kinh_nghiem' => $experience,
 					'hoc_van' => $education, 'noi_lam_viec' => $addresswork, 'ngoai_ngu' => $englishlevel,
-					'chung_chi' => $certificate, 'tu_gioi_thieu' => $description, 'avatar_url' => $avatarurl]);
+					'chung_chi' => $certificate, 'tu_gioi_thieu' => $description, 'avatar_url' => $avatar_url]);
 			}
 
 			echo '<script type="text/javascript">alert("Update data successfull" );</script>';

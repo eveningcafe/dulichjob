@@ -11,7 +11,6 @@
 <!-- thu vien tu viet -->
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
 
-
 </head>
 
 <body>
@@ -32,13 +31,20 @@ if (\Auth::user()) {
 	$link = "notUser";
 }
 ?>
-            <a href="<?php echo $link; ?>"><img src="{{ asset('img/meta2.gif') }}" alt="" width="17" height="14" /></a>
+            <a href="{{ url('/') }}"><img src="{{ asset('img/meta2.gif') }}" alt="" width="17" height="14" /></a>
             <a href="#"><img src="{{ asset('img/meta5.png') }}" alt="" width="17" height="14" /></a>
-            <a href="#"><img src="{{ asset('img/meta4.gif') }}" alt="" width="15" height="14" /></a>
+            @if(Auth::user()->type == "hdv")
+            <a href="{{ url('/eventHDV') }}"><img src="{{ asset('img/meta4.gif') }}" alt="" width="15" height="14" /></a>
+            @elseif(Auth::user()->type == "cty")
+            <a href="{{ url('/eventCty') }}"><img src="{{ asset('img/meta4.gif') }}" alt="" width="15" height="14" /></a>
+            @endif
+
+
+
         </div>
             @endauth
         @else
-            <p>Tips: <a href="{{ route('login') }}">Log in</a> for <a href="#">Advance search </a></p>
+            <p>Tips: <a href="{{ route('login') }}">Log in</a> for <a href="#"> search </a></p>
         @endif
 
 

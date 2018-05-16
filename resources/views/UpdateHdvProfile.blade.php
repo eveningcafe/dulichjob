@@ -54,18 +54,18 @@ if (!isset($avatarurl)) {
 <!-- noi dung -->
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-7 col-md-offset-2">
             <div class="panel panel-default">
             	<div class="panel-heading hdv">YOUR PROFILE</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="/HdvProfile/update">
+                    <form class="form-horizontal" method="POST" action="/HdvProfile/update" enctype="multipart/form-data" file="true">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Tên</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="name" type="text" class="form-control" name="name" value="<?php echo $hdvname; ?>" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -78,7 +78,7 @@ if (!isset($avatarurl)) {
 
                         <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
                             <label for="sex" class="col-md-4 control-label">Giới tính</label>
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="sex" type="text" class="form-control" name="sex" value="<?php echo $gioitinh; ?>" required autofocus>
                                 @if ($errors->has('sex'))
                                     <span class="help-block">
@@ -91,7 +91,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('phone1') ? ' has-error' : '' }}">
                             <label for="phone1" class="col-md-4 control-label">Số điện thoại 1</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="phone1" type="tel" class="form-control" name="phone1" value="<?php echo $sodienthoai1; ?>" required autofocus>
 
                                 @if ($errors->has('phone1'))
@@ -107,7 +107,7 @@ if (!isset($avatarurl)) {
                          <div class="form-group{{ $errors->has('phone2') ? ' has-error' : '' }}">
                             <label for="phone" class="col-md-4 control-label">Số điện thoại 2</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="phone2" type="tel" class="form-control" name="phone2" value="<?php echo $sodienthoai2; ?>" required autofocus>
 
                                 @if ($errors->has('phone2'))
@@ -123,7 +123,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('experience') ? ' has-error' : '' }}">
                             <label for="experience" class="col-md-4 control-label">Kinh nghiệm</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="experience" type="text" class="form-control" name="experience" value="<?php echo $kinhnghiem; ?>" required autofocus>
 
                                 @if ($errors->has('experience'))
@@ -137,7 +137,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('education') ? ' has-error' : '' }}">
                             <label for="education" class="col-md-4 control-label">Học vấn</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="education" type="text" class="form-control" name="education" value="<?php echo $hocvan; ?>" required autofocus>
 
                                 @if ($errors->has('education'))
@@ -151,7 +151,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('address-work') ? ' has-error' : '' }}">
                             <label for="address-work" class="col-md-4 control-label">Nơi làm việc</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="address-work" type="text" class="form-control" name="address-work" value="<?php echo $noilamviec; ?>" required autofocus>
 
                                 @if ($errors->has('address-work'))
@@ -165,7 +165,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('english-level') ? ' has-error' : '' }}">
                             <label for="english-level" class="col-md-4 control-label">Ngoại ngữ</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="english-level" type="text" class="form-control" name="english-level" value="<?php echo $ngoaingu; ?>" required autofocus>
 
                                 @if ($errors->has('english-level'))
@@ -179,7 +179,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('certificate') ? ' has-error' : '' }}">
                             <label for="certificate" class="col-md-4 control-label">Chứng chỉ</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="certificate" type="text" class="form-control" name="certificate" value="<?php echo $chungchi; ?>" required autofocus>
 
                                 @if ($errors->has('certificate'))
@@ -193,7 +193,7 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="description" class="col-md-4 control-label">Tự giới thiệu</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <textarea id="description" type="text" class="form-control" name="description" required><?php echo $tugioithieu; ?></textarea>
 
                                 @if ($errors->has('description'))
@@ -207,9 +207,8 @@ if (!isset($avatarurl)) {
                         <div class="form-group{{ $errors->has('avatar-url') ? ' has-error' : '' }}">
                             <label for="avatar-url" class="col-md-4 control-label">Avarta URL</label>
 
-                            <div class="col-md-6">
-                                <input id="avatar-url" type="url" class="form-control" name="avatar-url" value="<?php echo $avatarurl; ?>" required>
-
+                            <div class="col-md-10">
+                                <input class="form-control" type="file" name="image" />
                                 @if ($errors->has('avatar-url'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('avatar-url') }}</strong>
@@ -219,7 +218,7 @@ if (!isset($avatarurl)) {
                         </div>
 
                         <br><div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-10 col-md-offset-4">
                                 <button type="submit" name="submit" class="btn btn-primary">
                                     Update
                                 </button>
@@ -227,6 +226,11 @@ if (!isset($avatarurl)) {
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-md-offset-2">
+            <div>
+                <img alt="HDV image here" src={{asset($avatarurl)}} height="400" width="300" style="margin: 10px;" />
             </div>
         </div>
     </div>

@@ -12,6 +12,9 @@ foreach ($data as $row) {
 	$moTa = $row->mo_ta;
 	$cty = $row->ten;
 	$id = $row->tour_id;
+	$inTour = $row->inTour;
+	$danhsachHDV = $row->danhsachHDV;
+	$cty_user_id = $row->user_id;
 }
 ?>
 @extends('layouts.app')
@@ -84,14 +87,71 @@ foreach ($data as $row) {
                             <a href="{{url('viewInfoCty',$row->congty_id)}}"><?php echo $cty; ?></a>
                         </div>
 
-                        <br><div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    Đăng Ký
-                                </button>
-                            </div>
-                            <input type="hidden" name="tour_id" value="<?php echo $id; ?>"/>
-                        </div>
+                        <br>
+                        @if (Auth::check())
+                            @if(Auth::user()->type == "hdv")
+                                @if($inTour=="no")
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <button type="submit" name="submit" class="btn btn-primary">
+                                                Đăng Ký
+                                            </button>
+                                        </div>
+                                <input type="hidden" name="tour_id" value="<?php echo $id; ?>"/>
+                                </div>
+                                @else
+                                <h6>Danh sách hướng dẫn viên được nhận</h6>
+                                    <div class="form-group">
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th>Tên</th>
+                                                <th>Giới tính</th>
+                                                <th>Số điện thoại</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                 @foreach ($danhsachHDV as $huongdanvien)
+                                                    <tr>
+                                                        <td>{{$huongdanvien->ten}}</td>
+                                                        <td>{{$huongdanvien->gioi_tinh}}</td>
+                                                        <td>{{$huongdanvien->so_dien_thoai_1}}</td>
+                                                    </tr>
+                                                 @endforeach
+
+                                          </tbody>
+                                      </table>
+                                    <input type="hidden" name="tour_id" value="<?php echo $id; ?>"/>
+                                    </div>
+                                @endif
+                            @elseif(Auth::user()->type == "cty")
+                                @if(Auth::id()==$cty_user_id)
+                                    <h6>Danh sách hướng dẫn viên được nhận</h6>
+                                    <div class="form-group">
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th>Tên</th>
+                                                <th>Giới tính</th>
+                                                <th>Số điện thoại</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                 @foreach ($danhsachHDV as $huongdanvien)
+                                                    <tr>
+                                                        <td>{{$huongdanvien->ten}}</td>
+                                                        <td>{{$huongdanvien->gioi_tinh}}</td>
+                                                        <td>{{$huongdanvien->so_dien_thoai_1}}</td>
+                                                    </tr>
+                                                 @endforeach
+
+                                          </tbody>
+                                      </table>
+                                    <input type="hidden" name="tour_id" value="<?php echo $id; ?>"/>
+                                    </div>
+                                @endif
+                            @endif
+                        @endif
                     </form>
                 </div>
             </div>

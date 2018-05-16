@@ -39,8 +39,9 @@
                         <td> <a href="{{url('viewHDV',$row->huongdv_id)}}" >{{$row->ten}}</a></td>
                         <td> {{$row->tinh_trang_dk}} </td>
                         <!--sửa action--><td>
-                            <span><a href="/respondHDV/update?edit={{$row->tour_id}}&tt=accept&HDVid={{$row->huongdv_id}}"><input type="button" style="background-color: blue; color: white;" value="Nhận HDV" ></a></span>
-                            <span><a href="/respondHDV/update?edit={{$row->tour_id}}&tt=deny&HDVid={{$row->huongdv_id}}"><input type="button" style="background-color: blue; color: white;" value="Từ chối HDV" ></a></span>
+                           <span><a href="/respondHDV/update?tour_id={{$row->tour_id}}&tt=accept&HDVid={{$row->huongdv_id}}"><input type="button" value="Nhận HDV" <?php if($row->tinh_trang_dk!="wait") echo 'disabled style="background-color:gray; color: white;"'; else echo 'style="background-color: blue; color: white;"'?>></a></span>
+                            <span><a href="/respondHDV/update?tour_id={{$row->tour_id}}&tt=deny&HDVid={{$row->huongdv_id}}"><input type="button" value="Từ chối HDV" <?php if($row->tinh_trang_dk!="wait") echo 'disabled style="background-color:gray; color: white;"'; else echo 'style="background-color: blue; color: white;"'?>></a></span>
+
 
                         </td>
                         </tr>

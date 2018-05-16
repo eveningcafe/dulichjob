@@ -27,7 +27,7 @@ if ($count != 0) {
 <!-- noi dung -->
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-7 col-md-offset-2">
             <div class="panel panel-default">
             	<div class="panel-heading hdv">CTY PROFILE</div>
 
@@ -52,12 +52,7 @@ if ($count != 0) {
                                 <?php echo $website; ?>
                         </div>
 
-                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">Link ảnh công ty</label>
-
-                                <?php echo $image; ?>
-                        </div>
-                <?php for ($i = 0; $i < $count; $i++) { ?>
+                <?php for ($i = 0; $i < $count; $i++) {?>
                     <div> <label for="description" class="col-md-4 control-label">Văn phòng </label> </div>
                     <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                         <label for="address" class="col-md-4 control-label">Địa chỉ</label>
@@ -74,9 +69,12 @@ if ($count != 0) {
 
                             <?php echo $phone[$i]; ?>
                     </div>
-                <?php } ?>
+                <?php }?>
                 </div>
             </div>
+        </div>
+        <div class="col-md-5 col-md-offset-2">
+            <img alt="Company image here" src={{asset($image)}} height="200" width="300"/>
         </div>
     </div>
 </div>

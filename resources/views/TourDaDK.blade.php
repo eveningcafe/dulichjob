@@ -42,7 +42,7 @@
                         <td> {{$row->tinh_trang}} </td>
                         <td> {{$row->tinh_trang_dk}} </td>
                         <!--sửa action--><td>
-                            <span><a href="/huydkTour/delete?edit={{$row->tour_id}}"><input type="button" style="background-color: blue; color: white;" value="Hủy ĐK" ></a></span>
+                            <span><a href="/huydkTour/delete?tour_id={{$row->tour_id}}"><input type="button" value="Hủy ĐK" <?php if($row->tinh_trang_dk=="accept") echo 'disabled style="background-color:gray; color: white;"'; else echo 'style="background-color: blue; color: white;"'?>></a></span>
 
                         </td>
                         </tr>

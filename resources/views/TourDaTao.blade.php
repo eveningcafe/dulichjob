@@ -37,11 +37,11 @@
                         <td> {{$row->thoi_gian_ket_thuc}} </td>
                         <td> {{$row->han_dang_ky}} </td>
                         <!--sửa action--><td> 
-                            <a href="/editTour?edit={{$row->tour_id}}">
+                            <a href="/editTour?tour_id={{$row->tour_id}}">
                                 <input type="button" style="background-color: blue; color: white;" value="Edit Tour" />
                             </a></td>
                         <td>
-                            <a href="/cancleTour?edit={{$row->tour_id}}"><!--Hủy không xóa mà chuyển trạng thái thành hủy-->
+                            <a href="/cancleTour?tour_id={{$row->tour_id}}"><!--Hủy không xóa mà chuyển trạng thái thành hủy-->
                                 <input type="button" style="background-color: blue; color: white;" value="Hủy" />
                             </a>
                         </td>

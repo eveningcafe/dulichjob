@@ -22,7 +22,7 @@ foreach ($data as $row) {
 <!-- noi dung -->
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-7 col-md-offset-2">
             <div class="panel panel-default">
             	<div class="panel-heading hdv">YOUR PROFILE</div>
 
@@ -90,11 +90,7 @@ foreach ($data as $row) {
                                 <?php echo $tugioithieu; ?>
                         </div>
 
-                        <div class="form-group{{ $errors->has('avatar-url') ? ' has-error' : '' }}">
-                            <label for="avatar-url" class="col-md-4 control-label">Avarta URL</label>
 
-                                <?php echo $avatarurl; ?>
-                        </div>
 
                         <br><div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -107,10 +103,12 @@ foreach ($data as $row) {
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-5 col-md-offset-2">
             <div>
+                <img alt="HDV image here" src={{asset($avatarurl)}} height="400" width="300" />
                 <input type="button" style="margin: 10px;" onclick="location.href='{{ url('/viewTour') }}';" value="View Tour" />
                 <input type="button" style="margin: 10px;" onclick="location.href='{{ url('/viewAppliedTour') }}';" value="Tour Đã Đăng Ký" />
+                <input type="button" style="margin: 10px;" onclick="location.href='{{ url('/thongBaoHDV') }}';" value="Thông Báo" />
             </div>
 
         </div>
