@@ -2,6 +2,7 @@
 foreach ($data as $row) {
 	$ten = $row->ten;
 	$gioiTinh = $row->gioi_tinh;
+	$soDienThoai = $row->so_dien_thoai_1;
 	$anh = $row->avatar_url;
 	$kinhNghiem = $row->kinh_nghiem;
 	$hocVan = $row->hoc_van;
@@ -58,6 +59,11 @@ if (!isset($moTa)) {
                             <label for="ten" class="col-md-4 control-label">Giới tính</label>
                                 <?php echo $gioiTinh; ?>
                         </div>
+                        <div class="form-group{{ $errors->has('ten') ? ' has-error' : '' }}">
+                            <label for="ten" class="col-md-4 control-label">Số điện thoại</label>
+                                <?php echo $soDienThoai; ?>
+                        </div>
+
                         <div class="form-group{{ $errors->has('kinhNghiem') ? ' has-error' : '' }}">
                             <label for="kinhNghiem" class="col-md-4 control-label">Kinh Nghiệm</label>
                                 <?php echo $kinhNghiem; ?>

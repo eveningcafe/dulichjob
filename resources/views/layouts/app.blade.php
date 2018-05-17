@@ -32,7 +32,7 @@ if (\Auth::user()) {
 }
 ?>
             <a href="{{ url('/') }}"><img src="{{ asset('img/meta2.gif') }}" alt="" width="17" height="14" /></a>
-            <a href="#"><img src="{{ asset('img/meta5.png') }}" alt="" width="17" height="14" /></a>
+            <a href="{{url('/giveMoney')}}"><img src="{{ asset('img/meta5.png') }}" alt="" width="17" height="14" /></a>
             @if(Auth::user()->type == "hdv")
             <a href="{{ url('/eventHDV') }}"><img src="{{ asset('img/meta4.gif') }}" alt="" width="15" height="14" /></a>
             @elseif(Auth::user()->type == "cty")

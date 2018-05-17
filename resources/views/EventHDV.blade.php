@@ -50,7 +50,7 @@
         <div class="col-md-8 col-md-offset-2">
 			@foreach ($tourResults as $tourResult)
 				@if ($tourResult->tinh_trang_dk=='accept')
-					@if($tourResult->event_to_hdv=='cho tin')
+					@if($tourResult->event_to_hdv=='da thong bao')
 						<div>
 						<a href="{{url('clickSeeResult',$tourResult->tour_id)}}" class="as">Ban da duoc chap nhan tham gia tour di {{$tourResult->tenTour}}</a>
     					</div>

@@ -17,8 +17,7 @@ class CreateCongtyTable extends Migration {
 			$table->string('ten');
 			$table->string('tu_gioi_thieu');
 			$table->string('website_url');
-			$table->string('avatar_url');
-
+			$table->string('avatar_url')->default('img/default-placeholder.png');
 			$table->timestamps();
 		});
 	}

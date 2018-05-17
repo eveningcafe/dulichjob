@@ -24,7 +24,7 @@ class CreateHuongdanvienTable extends Migration {
 			$table->string('ngoai_ngu')->nullable();
 			$table->string('chung_chi')->nullable();
 			$table->string('tu_gioi_thieu')->nullable();
-			$table->string('avatar_url')->nullable();
+			$table->string('avatar_url')->default('img/default-placeholder.png');;
 			$table->timestamps();
 		});
 	}

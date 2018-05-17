@@ -12,7 +12,9 @@ class EventHDVController extends Controller {
 
 		$tourResults = HDVTour::where([['tinh_trang_dk', '<>', 'wait'], ['huongdv_id', '=', $hdv_id]])->get();
 		// ['event_to_hdv', '=', 'cho tin']
+
 		$tourInvites = \DB::table("hdv_invitation")->where([['huongdv_id', '=', $hdv_id]])->get();
+
 		// ['trang_thai', '=', 'not_see']
 		foreach ($tourInvites as $tourInvite) {
 			# code...

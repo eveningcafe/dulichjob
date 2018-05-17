@@ -23,7 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/giveMoney', 'HomeController@suport');
 //route mà người vào route chi có quền xem, dki neu can
 Route::get('viewInforTour/{tour_id}', 'TourController@getATour');
 Route::get('viewInfoCty/{cty_id}', 'CtyProfileController@getCty');

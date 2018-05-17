@@ -26,4 +26,7 @@ class HomeController extends Controller {
 			return redirect()->intended('/CtyProfile');
 		}
 	}
+	public function suport() {
+		return view('SupportMoney');
+	}
 }

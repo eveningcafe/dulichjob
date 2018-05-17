@@ -43,7 +43,11 @@ class HdvProfileController extends Controller {
 			$file = $request->file('image');
 
 			if ($file == null) {
-				$avatar_url = \DB::table('huong_dan_viens')->where([['user_id', '=', \Auth::user()->id]])->first()->avatar_url;
+				if (isset(\DB::table('cong_tys')->where([['user_id', '=', \Auth::user()->id]])->first()->avatar_url) == true) {
+					$avatar_url = \DB::table('huong_dan_viens')->where([['user_id', '=', \Auth::user()->id]])->first()->avatar_url;
+				} else {
+					$avatar_url = 'img/default-placeholder.png';
+				}
 			} else {
 				$filename = str_replace(' ', '-', $file->getClientOriginalName());
 				$image_name = Carbon::now()->format('YmdHs') . $filename;
